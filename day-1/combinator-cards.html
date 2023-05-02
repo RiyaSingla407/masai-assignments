@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Combinator cards</title>
+   <style>
+    #parent{
+        display:flex;
+        background-color: whitesmoke;
+        /*justify-content: space-around;
+        align-items:stretch;*/
+        width:100%;      
+       /* border:2px dashed black;*/
+    }
+    div div{
+        background-color:white;
+        width:100%;
+        margin:2%; 
+   /*border: 3px solid blue;*/
+    }
+    #parent h4::before{
+      content:"|";
+      color:red;
+     
+    }
+    .any{
+        margin-top: 0;
+    }
+    div>img{
+        width:100%; 
+        height:60%; 
+        
+    }  
+    div p{
+        margin-left: 10px;
+        font-style:normal;
+        font-weight:bold;
+        font-size:xx-large;
+    }
+    div>h4{
+        margin-left: 10px;
+        font-size: large;
+        align-items: last baseline;
+        color: grey;
+    }
+   </style>
+</head>
+<body>
+<div id="parent">
+    <div><img src="https://th.bing.com/th?id=OIP.lo0jDsw2V1Wo6Y173Q754QDLEs&w=205&h=303&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"; alt="image1"/>
+        <p>UK and US join forces to strike back in cyber-space</p>
+        <h4>  TECHNOLOGY</h4>
+    </div>
+    <div><img src=https://th.bing.com/th/id/OIP.CECxu-pfq3ODjY247f1e0QHaFj?w=234&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"; alt="image2"/>
+        <p>Lady Gaga took personal trauma into Gucci role</p>
+        <h4>  ENTERTAINMENT & ARTS</h4></div>
+    <div><img src="https://th.bing.com/th?q=Random+Shapes&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247"; alt="image3"/>
+        <p>The mothers using Instagram to offer advice to new mums and dads</p>
+        <h4>  BUSINESS</h4></div>
+</div>
+<div id="parent">
+    <div class="any"><img src="https://th.bing.com/th?id=OIP.Wytlw5AmN2HoCJ_kLGF1EgHaF7&w=279&h=223&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"; alt="image1"/>
+        <p>'I've seen irrerversible change but hope too for planet'</p>
+        <h4>  SCIENCE AND ENVIRONMENT</h4>
+    </div>
+    <div class="any"><img src="https://th.bing.com/th/id/OIP.k9oPo8pmV5C6RUS5UGgTjAHaEm?w=288&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"; alt="image2"/>
+        <p>Full force of Covid hitting Germany, warns Merkel</p>
+        <h4>  EUROPE</h4></div>
+    <div class=" any"><img src="https://th.bing.com/th/id/OIP.a_NBaDZCwiV6fKa7XJ6B9AHaEK?w=238&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"; alt="image3"/>
+        <p>Baby elephant dies after losing half its trunk</p>
+        <h4>  ASIA</h4></div>
+</div>
+</body>
+</html> 
