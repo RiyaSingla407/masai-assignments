@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee-Grid</title>
+    <style>
+        body{
+        background-color:mistyrose;
+        }
+        #parent{
+            display:grid;
+            grid-template-rows:repeat(3, 1fr);
+            grid-template-columns:repeat(3, 1fr);
+            margin:10px 100px 10px 100px;
+         
+        }
+        h2{
+            font-family:Arial, Helvetica, sans-serif;
+            margin-left:20px;
+            margin-bottom: -40px
+            
+        }
+        h3{
+         color: goldenrod;
+         text-align: right;
+         margin-right: 20px;
+        }
+        .mini{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            background-color: white;
+            border-radius: 5px;
+            margin: 20px 20px;
+        }
+        @media screen and (min-width:468px) and (max-width:900px) {
+           #parent{
+            grid-template-columns:repeat(2, 1fr); 
+           }     
+        }
+        @media screen and (min-width:0px) and (max-width:467px) {
+            #parent{
+            grid-template-columns:repeat(1, 1fr); 
+           }      
+        }
+        p{
+            color:grey;
+            font-size: medium;
+            margin-left: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="mini">
+            <div>
+                <h2>Cappuccino</h2>
+                <h3>$49</h3>
+            </div>
+          <p>Usage of the internet is becoming more common due to rapid advance.</p>
+        </div>
+    </div>
+</body>
+</html>
