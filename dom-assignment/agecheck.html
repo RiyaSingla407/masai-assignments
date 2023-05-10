@@ -7,24 +7,22 @@
     <title>age_check</title>
 </head>
 <body>
-    <input  type = "number" placeholder="enter your age here"/>
+    <input  type = number placeholder="enter your age here"/>
     <button onclick = "age()">submit</button>
-    <p id ="age">You can drive in India</p>
-    <p id="not age">You can't drive in India</p>
-    <p id="last">You are just old enough to drive in India</p>
+    <p id ="age"></p>
 </body>
 </html>
 <script>
 function age(){
-     if(document.querySelector("input").value===18){
-    console.log(document.qgetElementById("last"));
+     if(document.querySelector("input").value == 18){
+        document.querySelector("#age").innerText= "You are just old enough to drive in India!."
 }
    else if(document.querySelector("input").value<18){
-  console.log(document.getElementById("not age"));
+    document.querySelector("#age").innerText= "You can't drive in India."
     }
-   else if(document.querySelector("input").value>18){
-    console.log(document.querySelector("#age"));
-}
-
+   else 
+   {
+       document.querySelector("#age").innerText= "You can drive in India."
+   }
 };
 </script>
