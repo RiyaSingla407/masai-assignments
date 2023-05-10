@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>age_check</title>
+</head>
+<body>
+    <input  type = "number" placeholder="enter your age here"/>
+    <button onclick = "age()">submit</button>
+    <p id ="age">You can drive in India</p>
+    <p id="not age">You can't drive in India</p>
+    <p id="last">You are just old enough to drive in India</p>
+</body>
+</html>
+<script>
+function age(){
+     if(document.querySelector("input").value===18){
+    console.log(document.qgetElementById("last"));
+}
+   else if(document.querySelector("input").value<18){
+  console.log(document.getElementById("not age"));
+    }
+   else if(document.querySelector("input").value>18){
+    console.log(document.querySelector("#age"));
+}
+
+};
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div>
+        <input id="input1" type="number" placeholder="enter 1st number"/>
+        <input id="input2" type="number" placeholder="enter 2nd number"/>
+    </div>
+   <div>
+    <button onclick="add()">Add</button>
+    <button onclick="sub()">Subtract</button>
+    <button onclick="multi()">Multiply</button>
+    <button onclick="div()">Divide</button>
+   </div>
+
+</body>
+</html>
+<script>
+ 
+    console.log(document.title);
+    var arr=[];
+    var sum =arr[0]+arr [1];
+    function add(){
+arr[0]= document.getElementById("input1").value;
+arr[1]= document.getElementById("input2").value;
+
+alert(sum);
+    };
+</script>
