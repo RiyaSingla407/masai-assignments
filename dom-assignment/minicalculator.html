@@ -24,13 +24,45 @@
 </html>
 <script>
  
-    console.log(document.title);
-    var arr=[];
-    var sum =arr[0]+arr [1];
+   // console.log(document.title);
     function add(){
-arr[0]= document.getElementById("input1").value;
-arr[1]= document.getElementById("input2").value;
-
-alert(sum);
+     var arr=[];
+     arr[0]= parseInt(document.getElementById("input1").value);
+     arr[1]= parseInt(document.getElementById("input2").value);
+    var sum= arr.reduce(function(acc,element){
+      return (acc + element);
+    });
+   // console.log(arr);
+     alert(sum);
+    };
+    function multi(){
+     var arr=[];
+     arr[0]= parseInt(document.getElementById("input1").value);
+     arr[1]= parseInt(document.getElementById("input2").value);
+    var sum= arr.reduce(function(acc,element){
+      return (acc*element);
+    });
+   // console.log(arr);
+     alert(sum);
+    };
+    function div(){
+     var arr=[];
+     arr[0]= parseInt(document.getElementById("input1").value);
+     arr[1]= parseInt(document.getElementById("input2").value);
+    var sum= arr.reduce(function(acc,element){
+      return (acc/element);
+    });
+   // console.log(arr);
+     alert(sum);
+    };
+    function sub(){
+     var arr=[];
+     arr[0]= parseInt(document.getElementById("input1").value);
+     arr[1]= parseInt(document.getElementById("input2").value);
+    var sum= arr.reduce(function(acc,element){
+      return (acc - element);
+    });
+   // console.log(arr);
+     alert(sum);
     };
 </script>
