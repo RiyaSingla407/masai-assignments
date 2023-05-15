@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppy like Dislike</title>
+    <style>
+       #puppy {
+            display:grid;
+            grid-template-columns: repeat(3, 1fr);
+           padding:2%;
+        }
+        #puppy+div{
+            margin-left: 40%;
+        }
+        img{
+           height:100%;
+            width:96%;
+        }
+        button{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="puppy">
+<img src="https://th.bing.com/th?id=OIP.jFZQogcGSNncaVuPSgJ2cQHaFj&w=288&h=216&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+ alt="1">
+<img src="https://th.bing.com/th/id/OIP.KpEFcMTHlsHpJScfpo4ahgHaEo?w=295&h=184&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+ alt="2">
+<img src="https://th.bing.com/th/id/OIP._9pzbq8n5Hf3KTIYp8VtIgHaHa?w=194&h=194&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+ alt="3">
+    </div>
+    <div>  
+        <p >
+            Likes: <span id="likes"></span> 
+        </p>
+        <p >
+           Dislikes: <span id="dislikes"></span> 
+        </p>
+         <button id="likebtn">Like</button>
+        <button id="dislikebtn">Dislike</button>
+    </div>
+</body>
+</html>
+<script>
+     document.getElementById("likebtn").addEventListener("click",likefun);
+    var likecount = localStorage.getItem("likescount")|| 0;
+    document.querySelector("#likes").innerText = likecount;
+ /*   if (localStorage.getItem("likescount")=== null){
+        likecount=0;
+    }
+    else{
+        likecount=localStorage.getItem("likescount");
+    }*/
+function likefun(){
+likecount++;
+document.querySelector("#likes").innerText = likecount;
+localStorage.setItem("likescount",likecount);
+}
+
+
+document.querySelector("#dislikebtn").addEventListener("click",dislikefun);
+var dislikecount;
+if (localStorage.getItem("dislikescount")=== null){
+        dislikecount = 0;
+    }
+    else{
+        dislikecount = localStorage.getItem("dislikescount");
+    }
+document.querySelector("#dislikes").innerText= dislikecount;
+
+function dislikefun(){
+dislikecount++;
+document.querySelector("#dislikes").innerText= dislikecount;
+localStorage.setItem("dislikescount",dislikecount);
+}
+</script>
