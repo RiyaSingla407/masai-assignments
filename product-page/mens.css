@@ -1,0 +1,35 @@
+#parent{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 4px;
+   
+}
+#parent>div{
+height:400px;
+
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#pricebox{
+    display: flex;
+    justify-content: space-around;
+}
+button{
+   margin-left: 30%;
+   width:120px;
+   height:30px;
+   color:white;
+   background-color: green;
+   border-radius: 5px;
+   cursor: pointer;
+   border:0;
+}
+button:hover{
+    background-color: red;
+}
+#strike{
+    text-decoration:line-through;
+}
+img{
+    height:70%;
+    width:100%;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai | Signup </title>
+    <style>
+        #img{
+            text-align: center;  
+        }
+        h2,p{
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 5px;
+        }
+        form{
+            font-size: large;
+            font-weight: 600;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        #parent{
+        border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin:30%;
+            margin-top: 10px;
+            padding:30px;
+        }
+       span{
+        color:blue;
+        text-decoration: underline;
+        cursor:pointer;
+       }
+       input{
+        border-radius:5px;
+      margin:10px;
+       height:50px;
+       font-family:Arial, Helvetica, sans-serif;
+       padding: 8 12;
+       box-sizing: border-box;
+       font-size: large;
+       width:100%;
+       }
+       label,p{
+margin-left: 12px;
+       }
+       #submit{
+        background-color: blue;
+        color:white;
+        cursor:pointer;
+       }
+    </style>
+</head>
+<body>
+    <div id="img"> <img src="https://sso.masaischool.com/brand_dark.svg" alt="masai logo"></div>
+   <div id ="parent">
+       <h2>Sign Up</h2>
+    <form>
+       
+        <label for="">Full name</label><br/>
+        <input id="name" type="text" placeholder="Enter full name"><br/>
+        <label for="">Phone number or email address</label><br/>
+        <input id="email" type="text" placeholder="Enter phone number or email address"><br/>
+        <label for="">Password</label><br/>
+        <input id="pass" type="text" placeholder="Enter your password here"><br/>
+        <p>By signing up, I accept the Masai School<span> Terms of Service</span>
+            and acknowledge the <span>Privacy Policy</span>
+        </p>
+        <input id="submit" type="submit">
+    </form>
+</div>
+</body>
+</html>
+<script src="index.js"></script>
