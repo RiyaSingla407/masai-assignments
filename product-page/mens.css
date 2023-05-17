@@ -1,7 +1,7 @@
-#parent{
+#parent, #parentcart{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap: 4px;
+    gap: 8px;
    
 }
 #parent>div{
@@ -13,6 +13,27 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     justify-content: space-around;
 }
+button:hover{
+    background-color: red;
+}
+input{
+    background-color: gold;
+    font-size: large;
+    text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+    border:1px solid;
+    
+}
+#cartdiv{
+display:flex;
+justify-content: right;
+
+font-size: 20px;
+font-weight: bold;
+}
+#no{
+    margin-right: 100px;
+}
 button{
    margin-left: 30%;
    width:120px;
@@ -23,13 +44,21 @@ button{
    cursor: pointer;
    border:0;
 }
-button:hover{
-    background-color: red;
-}
+
 #strike{
     text-decoration:line-through;
 }
 img{
     height:70%;
     width:100%;
+}
+a{
+    color: green;
+    font-size: 45px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover{
+    color:red;
+    background-color: white;
 }

@@ -271,4 +271,16 @@ pricestriked.innerText= element.strikedoffprice;
 pricebox.append(priceproduct, pricestriked);
 box.append(image, productname, pricebox, cartbtn);
 document.querySelector("#parent").append(box);
+cartbtn.addEventListener("click", function(){
+  addtocart(index)});
   });
+
+  var productsinCart= [];
+  function addtocart(i){
+  var cartproduct= mensData.filter(function(element,index){ 
+      return index===i;
+  });
+
+    productsinCart.push(cartproduct[0]);
+  localStorage.setItem("cartproduct", JSON.stringify(productsinCart));
+  };

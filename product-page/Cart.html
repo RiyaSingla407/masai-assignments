@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="mens.css">
+</head>
+<body>
+  <a href="mens.html">Home</a>  
+  <div id="cartdiv">
+   <p id="no">Number of items: <span id="number"></span></p><br/>
+   <p>Price: Rs <span id="cartprice"></span></p>
+  </div>
+  <div id="parentcart"></div>
+</body>
+</html>
+
+<script>
+  var cart=  JSON.parse(localStorage.getItem("cartproduct")) || [];
+  if(cart.length===0){
+    document.getElementById("parentcart").innerText= "Your cart is empty, Please add more products."
+  }
+  else{
+    displayproducts();
+    calculatetotal();
+  };
+
+  function displayproducts(){
+
+   cart.map(function(element, index){
+   //element.image_url="https://assets.ajio.com/medias/sys_master/root/20210216/RACR/602ac11a7cdb8c1f1440e7f7/-473Wx593H-460738226-blue-MODEL.jpg";
+    var box= document.createElement("div");
+var image = document.createElement("img");
+image.setAttribute("src", element.image_url);
+var productname= document.createElement("h5");
+productname.innerText= element.name;
+var priceproduct= document.createElement("p");
+priceproduct.innerText= element.price;
+var promo=  document.createElement("input");
+
+var applypromo=  document.createElement("button");
+applypromo.innerText= "Apply Promo";
+applypromo.style.marginLeft= "2px";
+applypromo.style.marginTop= "4px";
+var promobox= document.createElement("div");
+promobox.append(promo, applypromo);
+promo.setAttribute("placeholder", "Enter Promocode")
+box.append(image, productname, priceproduct,promobox);
+document.querySelector("#parentcart").append(box);
+  });
+
+  };
+ 
+
+  document.getElementById("number").innerText= cart.length;
+  function calculatetotal(){
+
+    var total = cart.reduce(function(acc,element){
+   return (acc + element.price);
+
+  },0);
+  function discount(){
+ if(promo.value== masai30)
+ {
+  total= total*(.7);
+ }
+  };
+
+document.getElementById("cartprice").innerText=  total;
+  };
+  applypromo.addEventListener("click",discount);
+
+</script>
