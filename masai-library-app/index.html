@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Web20-C4</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="navbar">
+      <h2>Masai Library</h2>
+      <div id="tags">
+        <a href="./index.html">
+          <h2>Home</h2>
+        </a>
+        <a href="./dashboard.html">
+          <h2>Dashboard</h2>
+        </a>
+        <a href="./buy.html">
+          <h2>My Books</h2>
+        </a>
+        <a href="./bookmark.html">
+          <h2>Bookmark</h2>
+        </a>
+      </div>
+    </div>
+    <div id="create">
+      <h1 id="formtitle">Library Management System</h1>
+      <form>
+        <input id="name" placeholder="Book Name" type="text" /><br>
+        <input id="author" placeholder="Author Name" type="text" /><br>
+        <input id="desc" placeholder="Book Description" type="text" /><br>
+        <label for="">Adding Date:-</label><br>
+        <input type="date" id="added"/><br>
+        <select id="category">
+          <option value="">Select Category</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Self Help">Self Help</option>
+          <option value="Finance">Finance</option>
+        </select><br>
+        <input id="price" placeholder="Book's Price" type="number" /><br>
+        <input type="submit" value="Submit" /><br>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", storedetails);
+
+  var storevalue= JSON.parse(localStorage.getItem("book-list"))||[];
+
+  function storedetails(){
+    event.preventDefault();
+    var name= document.getElementById("name").value;
+  var author= document.getElementById("author").value;
+  var bookdescription= document.getElementById("desc").value;
+  var date= document.getElementById("added").value;
+  var category= document.getElementById("category").value;
+  var price= document.getElementById("price").value;
+  
+  var storeobj={
+    name: name,
+    author: author,
+    desc: bookdescription,
+    date: date,
+    category: category, 
+    price: price,
+
+  }
+
+  storevalue.push(storeobj);
+  localStorage.setItem("book-list", JSON.stringify(storevalue));
+     document.getElementById("name").value="";
+     document.getElementById("author").value="";
+     document.getElementById("desc").value="";
+     document.getElementById("added").value="";
+     document.getElementById("price").value="";
+  }
+ 
+  
+</script>

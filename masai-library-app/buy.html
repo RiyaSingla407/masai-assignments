@@ -1,0 +1,73 @@
+<html>
+
+<head>
+  <title>Web20-C4</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="navbar">
+    <h2>Masai Library</h2>
+    <div  id="tags">
+      <a href="./index.html">
+        <h2>Home</h2>
+      </a>
+      <a href="./dashboard.html">
+        <h2>Dashboard</h2>
+      </a>
+      <a href="./buy.html">
+        <h2>My Books</h2>
+      </a>
+      <a href="./bookmark.html">
+        <h2>Bookmark</h2>
+      </a>
+    </div>
+  </div>
+  <div id="tablediv">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Description</th>
+          <th>Added Date</th>
+          <th>Category</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Append your data here  -->
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+<script>
+  var buylists= JSON.parse(localStorage.getItem("buy-list"))||[];
+  displaybuylists();
+
+  function displaybuylists(){
+  document.querySelector("tbody").innerHTML="";
+
+  buylists.map(function (element, index){
+
+  var row= document.createElement("tr");
+  var td1= document.createElement("td");
+  td1.innerText= element.name;
+  var td2= document.createElement("td");
+  td2.innerText= element.author;
+  var td3= document.createElement("td");
+  td3.innerText= element.desc;
+  var td4= document.createElement("td");
+  td4.innerText= element.date;
+  var td5= document.createElement("td");
+  td5.innerText= element.category;
+  var td8= document.createElement("td");
+   td8.innerText= element.price;
+  row.append(td1,td2,td3,td4,td5,td8)
+  document.querySelector("tbody").append(row);
+  })
+  
+}
+</script>
