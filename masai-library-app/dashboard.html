@@ -116,7 +116,8 @@ storedvalues.splice(i,1);
 buylists.push(e);
 localStorage.setItem("buy-list", JSON.stringify(buylists));
 localStorage.setItem("book-list", JSON.stringify(storedvalues));
-displaystoredvalues();
+displaystoredvalues(storedvalues);
+document.getElementById("book-count").innerText= storedvalues.length;
 }
 
 var bookmarklists= JSON.parse(localStorage.getItem("bookmark-list"))||[];
@@ -125,7 +126,8 @@ storedvalues.splice(i,1);
 bookmarklists.push(e);
 localStorage.setItem("bookmark-list", JSON.stringify(bookmarklists));
 localStorage.setItem("book-list", JSON.stringify(storedvalues));
-displaystoredvalues();
+displaystoredvalues(storedvalues);
+document.getElementById("book-count").innerText= storedvalues.length;
 }
 
 </script>
