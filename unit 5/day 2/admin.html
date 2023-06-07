@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce using constructors</title>
+</head>
+<body>
+    <div class="container">
+        <form action="product.html"><br><br>
+           Name: <input id="name" type="text" placeholder="enter name"><br><br>
+            Category: <input id="category" type="text"product category placeholder="enter category "><br><br>
+           Price: <input id="price" type="number" placeholder="enter price"><br><br>
+           imageurl: <input id="image" type="text" placeholder="enter image url"><br><br>
+          Gender: <select name="Gender" id="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+           </select><br><br>
+          Sold Status: <select name="Sold" id="sold">
+                <option value="False">False</option>
+                <option value="True">True</option>
+            </select><br><br>
+            <input type="submit" id="add"><br><br>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+   
+    document.getElementById("add").addEventListener("click", addproduct);
+  
+    function addproduct(){
+        event.preventDefault();
+    var productarr= JSON.parse(localStorage.getItem("products")) || [];
+    var name= document.getElementById("name").value;
+    var category= document.getElementById("category").value;
+    var price= document.getElementById("price").value;
+    var image= document.getElementById("image").value;
+    var gender= document.getElementById("gender").value;
+    var sold= document.getElementById("sold").value;
+    
+
+        var product = new productfun(name, category, price, image, gender, sold )
+        function productfun(a,b,c,d,e,f)
+    {
+        this.name= a,
+        this.category=b,
+        this.price=c, 
+        this.imageurl=d,
+        this.gender=e,
+        this.sold=f
+    } 
+    productarr.push(product);
+    localStorage.setItem("products",JSON.stringify(productarr));
+    }
+
+</script>
