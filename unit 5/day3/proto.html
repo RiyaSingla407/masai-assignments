@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+ function vehiclefun(a,b,c,d) {
+    this.colour=a,
+    this.height=b,
+    this.seats=c,
+    this.fuel=d
+}
+var vehicle= new vehiclefun("blue", "7ft","8seater","petrol")
+
+
+ var model1= Object.create(vehicle);
+ console.log(model1.__proto__==vehicle);
+
+var car= Object.create(vehicle);
+console.log(car.fuel)
+
+
+/*var vehicles={
+    colour:"a",
+   height:"b",
+    seats:"c",
+    fuel:"d"
+}
+console.log(vehicles);*/
+</script>
+
