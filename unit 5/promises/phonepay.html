@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimic Phone Pay</title>
+</head>
+<body>
+    <br><br>
+    Your Pin: <input type="password" id="pin" placeholder="Enter your UPI pin here"  required><br><br>
+<input type="submit" value="Confirm payment" onclick="checkpin()">
+<div id="signdiv"></div>
+</body>
+</html>
+
+<script>
+    
+ function checkpin(){
+    var pinvalue=document.querySelector("#pin").value;
+    var signdiv= document.getElementById("signdiv");
+    var loadlogo=  document.createElement("img");
+    loadlogo.src="https://th.bing.com/th/id/OIP.RdB6_DvUTVfQa6Gqt-kvtAHaEK?w=270&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7";
+    var failurelogo=  document.createElement("img");
+    failurelogo.src="https://th.bing.com/th/id/OIP.d3ectQnZ3xQ-sVcYOd8XdQHaHa?w=180&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7";
+    var successlogo=  document.createElement("img");
+    successlogo.src="https://th.bing.com/th/id/OIP.I_vIrooq9XmGIKneEBJjKQHaHa?w=181&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7";
+    var para= document.createElement("p");
+    signdiv.innerHTML = ""; // Clear previous content
+    signdiv.appendChild(loadlogo);
+
+    const mypromise= new Promise((resolve, reject)=>{
+        setTimeout(() => {
+    if(pinvalue==="3456")
+    {
+        resolve("Payment Successful")
+        signdiv.innerHTML = "";
+        para.innerText="Payment Successful"
+        signdiv.append(successlogo,para);
+        
+    }
+    else {
+        reject("Incorrect Pin! Try Again")
+        signdiv.innerHTML = "";
+        para.innerText="Your Payment of $1 failed! Please try again! "
+        signdiv.append(failurelogo,para);
+    }
+    }, 2000);
+    });
+
+    mypromise.then(function(response){
+        alert(response);
+    }).catch(function(error){
+        alert(error);
+    })
+        
+    
+ }
+
+</script>

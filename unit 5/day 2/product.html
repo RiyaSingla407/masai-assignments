@@ -5,10 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-commerce part 2</title>
+    <style>
+        .counter{
+            display:grid;
+        }
+    </style>
 </head>
 <body>
+    <a href="admin.html">Admin Page</a>
     <div class="counter">
-        
+        <span></span>
     </div>
 </body>
 </html>
+
+
+<script>
+  
+  var listedproduct= JSON.parse(localStorage.getItem("products")) || [];
+
+function displayproduct(){
+document.querySelector(".counter>span").innerText= listedproduct.length;
+
+listedproduct.map(function(element,index){
+    document.querySelector(".counter").innerText="";  
+    var name= document.createElement("h3");
+    name.innerText= element.name;
+    var category= document.createElement("p");
+    category.innerText= element.category;
+    var price= document.createElement("p");
+    price.innerText= element.price;
+    var image= document.createElement("img");
+    image.setAttribute("src",element.image)
+    var gender= document.createElement("p");
+    gender.innerText= element.gender;
+    var sold= document.createElement("p");
+    sold.setAttribute("id","sold");
+    sold.innerText= element.sold;
+    var soldbutton= document.createElement("button");
+    soldbutton.innerText="Change Status";
+    soldbutton.style.cursor="pointer";
+    if(sold.innerText=="True")
+    {
+        soldbutton.style.color="white";
+        soldbutton.style.backgroundColor="red";
+    }
+    if(sold.innerText=="False")
+    {
+        soldbutton.style.backgroundColor="green";
+        soldbutton.style.color="white";
+    }
+    soldbutton.addEventListener("click",function(){
+        soldfun(element,index)
+    } );
+    var removebutton= document.createElement("button");
+    removebutton.innerText="Remove";
+    removebutton.style.cursor="pointer";
+    removebutton.addEventListener("click",function(){
+        removefun(index)
+    } );
+    var productdiv= document.createElement("div");
+    productdiv.setAttribute("id","container");
+    productdiv.append(name,category,price,image,gender,sold,soldbutton, removebutton);
+    document.querySelector(".counter").append(productdiv);
+}
+
+);
+};
+
+displayproduct();
+
+function removefun(i){
+ listedproduct.splice(i,1);
+ localStorage.setItem("products",JSON.stringify(listedproduct));
+displayproduct();
+}
+function soldfun(el,i){
+if(el.sold=="True"){
+    el.sold="False";
+    listedproduct[i].sold=el.sold;
+    localStorage.setItem("products",JSON.stringify(listedproduct));
+     displayproduct();
+}
+else if(el.sold=="False"){
+    el.sold="True";
+    listedproduct[i].sold=el.sold;
+    localStorage.setItem("products",JSON.stringify(listedproduct));
+   displayproduct();
+}
+}
+
+</script>

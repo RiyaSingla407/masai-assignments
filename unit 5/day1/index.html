@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>how js works assignment</title>
+</head>
+<body>
+    <div id="winner"><p></p></div>
+ <div class="container">
+    <div id="member1"><p>4</p> </div>
+    <div id="member2"><p>6</p></div>
+    <div id="member3"><p>5</p></div>
+ </div>
+ <button id="roll" >Roll The Dice</button>
+</body>
+</html>
+
+<script>
+  var member1score;
+  var member2score;
+  var member3score;
+var members=[];
+document.getElementById("roll").addEventListener("click",rolldice);
+function rolldice(){
+ member1score= document.querySelector("#member1>p").innerText;
+ member2score= document.querySelector("#member2>p").innerText;
+ member3score= document.querySelector("#member3>p").innerText;
+members[0]= parseInt(member1score);
+members[1]= parseInt(member2score);
+members[2]= parseInt(member3score);
+newscore();
+decidewinner();
+}
+
+var newscores;
+function newscore(){
+newscores =members.map(function(element,index){
+  if(element>0 && element<6){
+    return element+1;
+  }
+  else {
+    return element-4;
+  }
+})
+
+document.querySelector("#member1>p").innerText= newscores[0];
+document.querySelector("#member2>p").innerText= newscores[1];
+document.querySelector("#member3>p").innerText= newscores[2];
+
+}
+var winner;
+function decidewinner(){
+
+    winner = newscores.sort(function(a,b){
+    if( a>b)
+    {
+    return 1;
+    }
+    if( b>a)
+    {
+    return -1;
+    }
+    else{
+      return 0;
+    }
+})
+if(member1score === member2score  )
+{
+  document.querySelector("#member1").style.backgroundColor = "blue"; 
+  document.querySelector("#member2").style.backgroundColor = "blue";
+}
+else if(member2score===member3score)
+{
+  document.querySelector("#member3").style.backgroundColor = "blue"; 
+  document.querySelector("#member2").style.backgroundColor = "blue";
+}
+else if(member1score===member3score)
+{
+  document.querySelector("#member1").style.backgroundColor = "blue"; 
+  document.querySelector("#member3").style.backgroundColor = "blue";
+}
+
+if(winner[1]==document.querySelector("#member1>p").innerText){
+  document.querySelector("#member1").style.backgroundColor = "yellow";
+}
+else if(winner[1]==document.querySelector("#member2>p").innerText){
+  document.querySelector("#member2").style.backgroundColor = "yellow";
+}
+else if(winner[1]==document.querySelector("#member3>p").innerText){
+  document.querySelector("#member3").style.backgroundColor = "yellow";
+}
+
+if(winner[0]==document.querySelector("#member1>p").innerText){
+  document.querySelector("#member1").style.backgroundColor = "red";
+}
+else if(winner[0]==document.querySelector("#member2>p").innerText){
+  document.querySelector("#member2").style.backgroundColor = "red";
+}
+else if(winner[0]==document.querySelector("#member3>p").innerText){
+  document.querySelector("#member3").style.backgroundColor = "red";
+}
+
+if(winner[2]==document.querySelector("#member1>p").innerText){
+  document.querySelector("#member1").style.backgroundColor = "green";
+}
+else if(winner[2]==document.querySelector("#member2>p").innerText){
+  document.querySelector("#member2").style.backgroundColor = "green";
+}
+else if(winner[2]==document.querySelector("#member3>p").innerText){
+  document.querySelector("#member3").style.backgroundColor = "green";
+}
+
+
+if(winner[2]==document.querySelector("#member1>p").innerText)
+{
+document.querySelector("#winner>p").innerText= "member1wins";
+}
+else if(winner[2]==document.querySelector("#member2>p").innerText)
+{
+  document.querySelector("#winner>p").innerText= "member2wins";
+}
+else if(winner[2]==document.querySelector("#member3>p").innerText)
+{
+  document.querySelector("#winner>p").innerText= "member3wins";
+}
+
+}
+</script>

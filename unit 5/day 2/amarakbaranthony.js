@@ -1,7 +1,6 @@
 var amar= {
     place:"Goa",
     skill:"singer",
-
 }
 
 var akbar= {
@@ -11,13 +10,14 @@ var akbar= {
 
 var anthony= {
     place:"Kashmir",
-    skill:"chef",
+    skill:"chef",  
+}
+var object={
     skills:function(s){
         this.skill=s
     },
-   
 }
-anthony.skills.call(akbar, "chef")
+object.skills.call(akbar, "chef")
 console.log(akbar)
 
 /*function objects(a,b){

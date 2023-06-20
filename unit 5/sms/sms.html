@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+</head>
+<body>
+    <br><br>
+    <nav><a href="dashboard.html">Dashboard </a></nav><br><br>
+  <div>
+      <span id="batch1">Batch 1: 0</span><br><br>
+      <span id="batch2">Batch 2: 0</span><br><br>
+  </div><br><br><br>
+    <form action="" >
+       Name: <input type="text" placeholder="enter your name" id="name"><br><br>
+       Course: <input type="text" id="course"><br><br>
+       Image-Url: <input type="text" id="image"><br><br>
+       Batch: <select name="Batch" id="batch"><br><br>
+        <option value="">Select Batch</option>
+        <option value="Batch 1">Batch 1</option>
+        <option value="Batch 2">Batch 2</option>
+       </select>
+       <input type="submit" onclick="takedata()"><br><br>
+    </form>
+</body>
+</html>
+
+<script>
+     var studentdata=  JSON.parse(localStorage.getItem("studentdata"))||[];
+     studentcount();
+     var student;
+    function takedata(){
+    event.preventDefault();     
+    student={
+        name:document.querySelector("#name").value,
+        course:document.querySelector("#course").value,
+        image :document.querySelector("#image").value,
+        batch :document.querySelector("#batch").value
+    }
+     studentdata.push(student);
+       localStorage.setItem("studentdata", JSON.stringify(studentdata));
+       studentcount()
+    }
+
+    var batch1count;
+    var batch2count;
+    function studentcount(){
+        batch1count=0;
+        batch2count=0;
+   
+        studentdata.forEach(function(element,index){
+            if(element.batch=="Batch 1")
+            {
+              batch1count++;
+        document.querySelector("#batch1").innerText=`Batch 1:${batch1count}`;
+            }
+            else if(element.batch=="Batch 2")
+            {
+              batch2count++;
+        document.querySelector("#batch2").innerText=`Batch 2:${batch2count}`;
+            }
+        })
+    }
+ 
+</script>

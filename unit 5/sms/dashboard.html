@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard page</title>
+</head>
+<body>
+    <nav><a href="sms.html">SMS</a></nav><br><br>
+    <div>
+      <span id="batch1">Batch 1: 0</span><br><br>
+      <span id="batch2">Batch 2: 0</span><br><br>
+    </div><br><br><br>
+    <div class="studentdata">
+
+    </div>
+</body>
+</html>
+<script>
+  var storeddata= JSON.parse(localStorage.getItem("studentdata"))||[];
+  studentcount();
+  displaystoreddata()
+ function displaystoreddata(){
+    document.querySelector(".studentdata").innerText="";
+    
+    storeddata.map(function(element,index){
+      var name= document.createElement("h3");
+     name.innerText= element.name;
+     var course= document.createElement("p");
+     course.innerText= element.course;
+     var image= document.createElement("img");
+      image.setAttribute("src",element.image);
+      image.setAttribute("alt","image1");
+     var batch= document.createElement("p");
+      batch.innerText= element.batch;
+      var removebtn= document.createElement("button");
+      removebtn.innerText= "Remove";
+      removebtn.addEventListener("click",function(){removefun(element,index)});
+      var container= document.createElement("div");
+      container.append(name,course,image,batch,removebtn);
+      document.querySelector(".studentdata").append(container);
+
+  })
+
+  }
+
+
+  var trasharr=JSON.parse(localStorage.getItem("trash"))||[];
+  var trash;
+  function removefun(el,i){
+    trash= storeddata.splice(i,1);
+    trasharr.push(trash);
+   localStorage.setItem("studentdata",JSON.stringify(storeddata));
+      displaystoreddata()
+   localStorage.setItem("trash",JSON.stringify(trasharr));
+      studentcount();
+  }
+
+
+
+    var batch1count;
+    var batch2count;
+    function studentcount(){
+        batch1count=0;
+        batch2count=0;
+   
+        storeddata.forEach(function(element,index){
+            if(element.batch=="Batch 1")
+            {
+              batch1count++;
+        document.querySelector("#batch1").innerText=`Batch 1:${batch1count}`;
+            }
+            else if(element.batch=="Batch 2")
+            {
+              batch2count++;
+        document.querySelector("#batch2").innerText=`Batch 2:${batch2count}`;
+            }
+        })
+    }
+</script>

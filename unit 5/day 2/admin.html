@@ -7,8 +7,9 @@
     <title>E-commerce using constructors</title>
 </head>
 <body>
+    <a href="product.html">Product Page</a>
     <div class="container">
-        <form action="product.html"><br><br>
+        <form action=""><br><br>
            Name: <input id="name" type="text" placeholder="enter name"><br><br>
             Category: <input id="category" type="text"product category placeholder="enter category "><br><br>
            Price: <input id="price" type="number" placeholder="enter price"><br><br>
@@ -54,6 +55,11 @@
         this.sold=f
     } 
     productarr.push(product);
+         document.getElementById("name").value="";
+    document.getElementById("category").value="";
+    document.getElementById("price").value="";
+   document.getElementById("image").value="";
+    document.getElementById("gender").value="";
     localStorage.setItem("products",JSON.stringify(productarr));
     }
 
