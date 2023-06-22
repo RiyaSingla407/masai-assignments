@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB API</title>
+</head>
+<body>
+    <div>
+        <h3>Find Movie</h3>
+        Enter Title: <input type="search" id="title"><br><br>
+        Search By Rating: <input type="search" id="rating"><br><br>
+        Search By Language: <input type="search" id="language"><br><br>
+        <input type="submit" value="search" onclick="fetchmovies()">
+    </div>
+    <div class="searchresult">
+
+    </div>
+</body>
+</html>
+
+<script>
+ var url="http://www.omdbapi.com/?i=tt3896198&apikey=9e0b6945";
+    function fetchmovies(){
+
+        async function readytofetch(url){
+            let fetchurl= await fetch(url);
+            let respo = await fetchurl.json();
+            console.log(respo);
+           return respo;
+        }
+        readytofetch(url);
+        
+           respo.array.forEach(element => {
+            var card= document.createElement("div");
+            var title= document.createElement("h4");
+            var type= document.createElement("p");
+            var writer = document.createElement("p");
+            var year= document.createElement("p");
+            var imdbrating= document.createElement("p");
+            var released= document.createElement("p");
+            card.append(title, year, released, imdbrating, type, writer);
+            document.querySelector(".searchresult").append(card);
+ 
+           });
+           
+    }
+
+</script>
