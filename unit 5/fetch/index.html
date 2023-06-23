@@ -4,46 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMDB API</title>
+    <style>
+.searchresult{
+    height:100%;
+    width:100%;
+    margin:auto;
+    margin-top:2%;
+    justify-content: center;
+    padding: 2%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+gap:10px;
+
+}
+.searchresult>div>img{
+    height:200px;
+    width:100%;
+}
+.searchresult>div{
+  
+    height:400px;
+    display: grid;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.searchresult>div>p{
+    text-align: center;
+    margin:auto;
+}
+.searchresult>div>h3{
+    text-align: center;
+    margin:auto;
+}
+#recommend{
+    height:10px;
+}
+    </style>
 </head>
 <body>
     <div>
         <h3>Find Movie</h3>
-        Enter Title: <input type="search" id="title"><br><br>
-        Search By Rating: <input type="search" id="rating"><br><br>
-        Search By Language: <input type="search" id="language"><br><br>
-        <input type="submit" value="search" onclick="fetchmovies()">
+        Enter Title: <input type="search" id="title"><input type="submit" value="search" onclick="fetchmoviesbytitle()"><br><br>
+        Search With Details: <input type="search" id="search"><input type="submit" value="search" onclick="fetchmoviesbySearch()"><br><br>
+        
     </div>
-    <div class="searchresult">
-
-    </div>
+    <div class="searchresult"></div> 
 </body>
 </html>
 
 <script>
- var url="http://www.omdbapi.com/?i=tt3896198&apikey=9e0b6945";
-    function fetchmovies(){
-
-        async function readytofetch(url){
-            let fetchurl= await fetch(url);
-            let respo = await fetchurl.json();
-            console.log(respo);
-           return respo;
+  function fetchmoviesbySearch(){
+        var  alldetail= document.getElementById("search").value;
+        var urlnew=`http://www.omdbapi.com/?i=tt3896198&apikey=9e0b6945&t=${alldetail}`;
+        async function readytofetch(urln){
+            try{
+                let fetchurlnew= await fetch(urln);
+                let response = await fetchurlnew.json();
+                console.log(response);
+                    showimage(response)
+            
+            }catch(e){
+                console.log(e);
+            }
         }
-        readytofetch(url);
-        
-           respo.array.forEach(element => {
-            var card= document.createElement("div");
-            var title= document.createElement("h4");
+          
+        function showimage(element){
+           if(element.Error=="Movie not found!")
+           {
+            var error= document.createElement("img");
+                error.src="https://www.bing.com/th/id/OGC.f45d0b0fcca3b0dbad130f185b383907?pid=1.7&rurl=https%3a%2f%2fcdn.dribbble.com%2fusers%2f2382015%2fscreenshots%2f6065978%2fno_result.gif&ehk=jp1WJedqVb7GoFwGirc6h5sLLhioXeH1r4UIkfhPnmE%3d";
+                document.querySelector(".searchresult").append(error);
+           }
+           else{
+           var card= document.createElement("div");
+            var poster= document.createElement("img");
+            poster.src= element.Poster;
+            var title= document.createElement("h3");
+            title.textContent= `Title: ${element.Title}`;
             var type= document.createElement("p");
+            type.textContent= `Type: ${element.Type}`;
+            var director= document.createElement("p");
+           director.textContent=`Director: ${element.Director}`;
+            var country= document.createElement("p");
+           country.textContent= `Country: ${element.Country}`;
             var writer = document.createElement("p");
-            var year= document.createElement("p");
+            writer.textContent=`Writers: ${element.Writer}`;
+            var genre= document.createElement("p");
+           genre.textContent= `Genre: ${element.Genre}`;
             var imdbrating= document.createElement("p");
+            imdbrating.textContent = "IMDB Rating: ";
+            if(element.imdbRating>8.5){
+                var recommended= document.createElement("img");
+                recommended.src ="https://th.bing.com/th/id/OIP.gZiAz7qsScxG2GLDAJNzagHaIF?w=161&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7";
+                recommended.setAttribute("id","recommend");
+                imdbrating.appendChild(recommended);
+               }
+             imdbrating.innerHTML += ` ${element.imdbRating}`;
             var released= document.createElement("p");
-            card.append(title, year, released, imdbrating, type, writer);
+            released.textContent= `Release Date: ${element.Released}`;
+            card.append(poster,title, released, imdbrating, genre,type, writer, director,country);
             document.querySelector(".searchresult").append(card);
- 
+           }
+       
+        }
+
+          readytofetch(urlnew);
+    }
+
+
+    function fetchmoviesbytitle(){
+
+        var moviename= document.getElementById("title").value;
+        var bysearch=`http://www.omdbapi.com/?i=tt3896198&apikey=9e0b6945&s=${moviename}`;
+        async function readytofetch(url){
+            try{
+                let fetchurl= await fetch(url);
+                let respo = await fetchurl.json();
+                console.log(respo);
+                    error(respo);
+                    showimage(respo.Search);
+            
+            }catch(e){
+                console.log(e);
+            }
+        
+        }
+          
+        function  error(err){
+            if(err.Error=="Movie not found!")
+           {
+            var error= document.createElement("img");
+                error.src="https://www.bing.com/th/id/OGC.f45d0b0fcca3b0dbad130f185b383907?pid=1.7&rurl=https%3a%2f%2fcdn.dribbble.com%2fusers%2f2382015%2fscreenshots%2f6065978%2fno_result.gif&ehk=jp1WJedqVb7GoFwGirc6h5sLLhioXeH1r4UIkfhPnmE%3d";
+                document.querySelector(".searchresult").append(error);
+           }
+         
+        };
+      
+
+        function showimage(arrr){
+            arrr.forEach(function(element,index){
+            var card= document.createElement("div");
+            var poster= document.createElement("img");
+            poster.src= element.Poster;
+            var title= document.createElement("h3");
+            title.textContent= `Title: ${element.Title}`;
+            var type= document.createElement("p");
+            type.textContent= `Type: ${element.Type}`;
+           var year= document.createElement("p");
+           year.textContent= `Year: ${element.Year}`;
+            var imdbrating= document.createElement("p");
+            imdbrating.textContent =`IMDB ID: ${element.imdbID}`;
+            card.append(poster,title, imdbrating, year,type);
+            document.querySelector(".searchresult").append(card);
            });
-           
+        };
+
+          readytofetch(bysearch);
     }
 
 </script>

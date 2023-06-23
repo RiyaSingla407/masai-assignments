@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check your weather</title>
+    <style>
+        .content{
+            height:100%;
+            width:100%;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            gap:20px;
+            margin:2%;
+           box-sizing: border-box;
+
+        }
+        .content>div{
+            height:100%;
+            width:100%;
+            margin:auto;
+            box-sizing: border-box;
+            border: 2px solid red;
+        }
+        .content>div>img{
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Check Weather at your Location</h2>
+    <input type="search" id="city" required><input type="submit" value="Check Weather" onclick="showweather()">
+    <div class="content"></div>
+</body>
+</html>
+
+<script>
+function showweather(){
+
+    var cityname= document.querySelector("#city").value;
+    var weatherapi= `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=92f460f6b136c2bfa4d45b6de9128ea8&units=metric`;
+    
+    async function weather(url){
+        const fetchapi= await fetch(url);
+        const anotherfetch= await fetchapi.json();
+        console.log(anotherfetch);
+        displayweather(anotherfetch)
+     }
+     function displayweather(obje){
+        if(obje.message=="Nothing to geocode")
+           {
+            var error= document.createElement("img");
+                error.src="https://www.bing.com/th/id/OGC.f45d0b0fcca3b0dbad130f185b383907?pid=1.7&rurl=https%3a%2f%2fcdn.dribbble.com%2fusers%2f2382015%2fscreenshots%2f6065978%2fno_result.gif&ehk=jp1WJedqVb7GoFwGirc6h5sLLhioXeH1r4UIkfhPnmE%3d";
+                document.querySelector(".content").append(error);
+           }
+           else
+           {
+            var card= document.createElement("div");
+            var city= document.createElement("h3");
+            city.textContent= `City: ${obje.name}`;
+            var weathernow= document.createElement("p");
+            weathernow.textContent= `Weather: ${obje.weather[0].main},  Description: ${obje.weather[0].description}`;
+            var weatherimg= document.createElement("img");
+            if(obje.weather[0].main=='Clouds')
+            {
+              weatherimg.src= "https://www.bing.com/th/id/OGC.49d27cc7feb4f849fb3d4134590e977d?pid=1.7&rurl=http%3a%2f%2fmedia3.giphy.com%2fmedia%2fPIh4laWJlz9bq%2fgiphy.gif&ehk=RCGH%2fYJ%2fTcxtRfrfdnbuqbqpu8J%2bFQiSBP67ZkpnpVo%3d";
+            }
+            else if(obje.weather[0].main=='Clear')
+            {
+                weatherimg.src="https://th.bing.com/th?id=OIP.cPunfetoA8EbST26FGZcRgHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2";
+            }
+            else if(obje.weather[0].main=='mist')
+            {
+                weatherimg.src="https://www.bing.com/th/id/OGC.377e261b69854a26ef3de82259e8f220?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fxT9GEpwYcYtwrqjdQc%2fgiphy.gif&ehk=CTg3vcbXMUg5K9GKZVh9dEAdZIyzne5VrsJj11ingfY%3d";
+            }
+            else{
+                weatherimg.src= "https://www.bing.com/th/id/OGC.127c58499c2133fb1c9db5399275fb60?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fPbOaO2fedzQLm%2fgiphy.gif&ehk=q3tBI7oDe4iqktvLIq47XFdV8lO9RHMAM87TBsM56Vo%3d";
+           
+            }
+            var maxtemp= document.createElement("p");
+            maxtemp.textContent= `Max-Temp: ${obje.main.temp_max}°C`;
+            var mintemp= document.createElement("p");
+            mintemp.textContent= `Min:Temp: ${obje.main.temp_min}°C`;
+            var windspeed= document.createElement("p");
+           // var windicon= '<i class="fa-solid fa-wind"></i>';
+           windspeed.textContent=`WindSpeed: ${obje.wind.speed}`;
+
+            var country= document.createElement("p");
+           country.textContent= `Country: ${obje.sys.country}`;
+           var sunset= document.createElement("img");
+            sunset.src= "https://www.bing.com/th/id/OGC.9ce08e487c1d13f8e8cd3df0ca75e91a?pid=1.7&rurl=https%3a%2f%2fi.pinimg.com%2foriginals%2f80%2fe4%2f2f%2f80e42fe5c2b50bf3c1b771eed3c6645e.gif&ehk=X4WR3nhCInt8YkhzwX0tanZkaRxNlJlH52eYgB2umgE%3d";
+            var sun= document.createElement("img");
+            sun.src= " https://www.bing.com/th/id/OGC.381fa7ebbba661973bc54dfe3fa86a81?pid=1.7&rurl=https%3a%2f%2fc.tenor.com%2fyJY8H1AtS2sAAAAC%2fsun-waving.gif&ehk=fw7EGI26LJ%2bxXjkfqzmMZFqVpoDCNi8vlSa0hJ0JyYw%3d";
+            
+           var sunrise= document.createElement("p");
+          sunrise.textContent= `Sunrise: ${obje.sys.sunrise}`;
+           var sunset= document.createElement("p");
+           sunset.textContent= `Sunset: ${obje.sys.sunset}`;
+           card.append(weatherimg,city,country,weathernow,mintemp,maxtemp,windspeed,sunrise,sunset);
+            document.querySelector(".content").append(card);
+              
+           }
+     }
+    weather(weatherapi);
+}
+</script>
+<script src="https://kit.fontawesome.com/28bf9b0b66.js" crossorigin="anonymous"></script>
