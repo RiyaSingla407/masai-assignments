@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Supermart App</title>
+    <script src="index.js"></script>
+    <style>
+        *{
+            box-sizing:border-box ;
+            padding:5px;
+            margin:auto;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            font-size: larger;
+        }
+
+        #groceries{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap:10px;
+            height:100%;
+        }
+        .card{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            height:400px;
+            overflow: hidden;
+        }
+        .card>img{
+            height:250px;
+        }
+        button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="getdata()">
+    <h1>Select your groceries here</h1>
+    <nav>
+         <a href="">Login</a>
+        <a href="">SignUp</a>
+        <a href="cart.html">Cart</a>
+        <a href="">Wallet Balance: ₹ <span id="wallet">700</span></a>
+    </nav>
+    <div id="groceries"></div>
+</body>
+</html>
+
